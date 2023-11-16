@@ -71,6 +71,17 @@ uint8_t last01 = 1;
 uint8_t last02 = 1;
 int a = sizeof(str1);
 int b = sizeof(str2);
+
+float minAngle = 0.0;  // 최소 각도
+  float maxAngle = 180.0;  // 최대 각도
+  float minPulseWidth = 1.0;  // 최소 펄스 폭 (1ms)
+  float maxPulseWidth = 2.0;  // 최대 펄스 폭 (2ms)
+  int angel(float angle){
+  	float normalizedAngle = (angle - minAngle) / (maxAngle - minAngle);
+  	float pulseWidth = minPulseWidth + normalizedAngle * (maxPulseWidth - minPulseWidth);
+  	uint16_t ccrValue = (uint16_t)(pulseWidth * TIM3->ARR);
+  	return ccrValue;
+  }
 /* USER CODE END 0 */
 
 /**
@@ -119,7 +130,8 @@ int main(void)
   	if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == 0){
   		button_2 = 0;
   		button_1 = 1;
-  		__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 1250);
+  		HAL_Delay(10);
+  		angel(180);
   	}
 
 
@@ -143,10 +155,10 @@ int main(void)
   	ssd1306_WriteString(intTostr_2, Font_11x18, White);
 
   	ssd1306_UpdateScreen();
-  	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 250);
-  	HAL_Delay(10);
+  	angel(0);
   	button_1 = 0;
   	button_2 = 0;
+  	HAL_Delay(10);
 
   }
     /* USER CODE END WHILE */
@@ -248,7 +260,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 144-1;
+  htim3.Init.Prescaler = 1440-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 1000-1;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
