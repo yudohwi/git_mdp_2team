@@ -114,6 +114,8 @@ int main(void)
   char str[20];*/
 
   uint8_t str[20];
+  uint16_t value0, value1;
+  char str1[20];
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -121,7 +123,10 @@ int main(void)
   while (1)
   {
 	HAL_UART_Receive(&huart1, (uint8_t*)str, sizeof(str), 1000);
-	HAL_UART_Transmit(&huart2, (uint8_t*)str, strlen(str), 1000);
+	sscanf(str, "%d, %d", &value0, &value1);
+
+	sprintf(str1, "%d, %d\r\n", value0, value1);
+	HAL_UART_Transmit(&huart2, (uint8_t*)str1, strlen(str1), 1000);
 	HAL_Delay(1000);
 
   	/*HAL_ADC_Start(&hadc1);
