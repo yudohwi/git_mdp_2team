@@ -141,7 +141,7 @@ int main(void)
   	//sprintf(vout_1, "vout_1: %2d\r\n", value_1);
   	sprintf(str, "%d, %d\n", (int)value_0, (int)value_1);
 
-  	HAL_UART_Transmit(&huart1, str, strlen(str), 1000);
+  	HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str), 1000);
   	HAL_Delay(1000);
 
 
