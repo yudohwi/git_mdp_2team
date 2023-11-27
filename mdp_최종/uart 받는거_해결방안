@@ -1,0 +1,24 @@
+ /* USER CODE BEGIN 2 */
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+  int state = 1;
+  int last = 1;
+ // HAL_UART_Receive(&huart1, (uint8_t*)rx_data, sizeof(rx_data), 1000);
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+  	state = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+  	HAL_UART_Receive(&huart1, rx_data, sizeof(rx_data), 1000);
+  	if (rx_data[0] == 'a' && rx_data[1] == '1') {
+  	      htim3.Instance->CCR2 = 1250;
+  	} else if (rx_data[0] == 'a' && rx_data[1] == '0') {
+  	     htim3.Instance->CCR2 = 250;
+  	}
+  	if (state == 0 && state != last){
+  		HAL_UART_Transmit(&huart1, (uint8_t*)message, sizeof(message)-1,10);
+  		HAL_Delay(10);
+  	}
+  	last = state;
+    /* USER CODE END WHILE */
