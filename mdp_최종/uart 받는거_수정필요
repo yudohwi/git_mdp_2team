@@ -58,11 +58,11 @@ UART_HandleTypeDef huart2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_USART1_UART_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC2_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
-static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -101,34 +101,26 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_USART1_UART_Init();
   MX_ADC1_Init();
   MX_ADC2_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
-  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+
   /*uint16_t value_0;
   uint16_t value_1;
   char vout_0[20];
   char vout_1[20];
   char str[20];*/
 
-  uint8_t str[20];
-  uint16_t value0, value1;
-  char str1[20];
-  /* USER CODE END 2 */
+  uint8_t rx_data[12];
+  /*USER CODE END 2*/
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	HAL_UART_Receive(&huart1, (uint8_t*)str, sizeof(str), 1000);
-	sscanf(str, "%d, %d", &value0, &value1);
-
-	sprintf(str1, "%d, %d\r\n", value0, value1);
-	HAL_UART_Transmit(&huart2, (uint8_t*)str1, strlen(str1), 1000);
-	HAL_Delay(1000);
-
   	/*HAL_ADC_Start(&hadc1);
   	HAL_ADC_PollForConversion(&hadc1, 200);
   	value_0 = HAL_ADC_GetValue(&hadc1);
@@ -137,14 +129,15 @@ int main(void)
   	HAL_ADC_Start(&hadc2);
   	HAL_ADC_PollForConversion(&hadc2, 200);
   	value_1 = HAL_ADC_GetValue(&hadc2);
-  	HAL_ADC_Stop(&hadc2);*/
+  	HAL_ADC_Stop(&hadc2);
 
-  	/*sprintf(str, "%d, %d\n", (int)value_0, (int)value_1);
+  	sprintf(str, "%d, %d\n", (int)value_0, (int)value_1);
 
-  	HAL_UART_Transmit(&huart1, str, strlen(str), 1000);
+  	HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str), 1000);
   	HAL_Delay(1000);*/
 
-
+  	HAL_UART_Receive(&huart1, rx_data, sizeof(rx_data), 1000);
+  	HAL_UART_Transmit(&huart2, (uint8_t *)rx_data, sizeof(rx_data),10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -165,12 +158,13 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
+  RCC_OscInitStruct.HSEPredivValue = RCC_HSE_PREDIV_DIV1;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI_DIV2;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -233,7 +227,7 @@ static void MX_ADC1_Init(void)
   */
   sConfig.Channel = ADC_CHANNEL_10;
   sConfig.Rank = ADC_REGULAR_RANK_1;
-  sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+  sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
   {
     Error_Handler();
@@ -311,7 +305,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 128-1;
+  htim2.Init.Prescaler = 144-4;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 10000-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -370,7 +364,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 128-1;
+  htim3.Init.Prescaler = 144-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 10000-1;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
