@@ -109,7 +109,7 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
-  uint8_t rx_data[3];
+  char rx_data[2];
  // HAL_UART_Receive(&huart1, (uint8_t*)rx_data, sizeof(rx_data), 1000);
   /* USER CODE END 2 */
 
@@ -474,4 +474,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
