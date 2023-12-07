@@ -111,8 +111,6 @@ int main(void)
   ssd1306_Init();
   int button_1 = 0;
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  char tx_data_1[] = "0";
-  char tx_data_2[] = "1";
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -124,13 +122,13 @@ int main(void)
 
 	  if(button_1 == 1){
 
-	  HAL_UART_Transmit(&huart3, (uint8_t *)tx_data_1, sizeof(tx_data_1)-1, 10);
+	  HAL_UART_Transmit(&huart3, (uint8_t *)"0", sizeof("0")-1, 10);
 	  htim3.Instance->CCR1 = 1500;
 	  HAL_Delay(1000);
 
 	  }else{
 
-	  HAL_UART_Transmit(&huart3, (uint8_t *)tx_data_2, sizeof(tx_data_2)-1, 10);
+	  HAL_UART_Transmit(&huart3, (uint8_t *)"1", sizeof("1")-1, 10);
 	  htim3.Instance->CCR1 = 2500;
 	  HAL_Delay(1000);
 
