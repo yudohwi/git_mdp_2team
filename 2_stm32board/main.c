@@ -122,29 +122,27 @@ int main(void)
 
 	  if(button_1 == 1){
 
-	  HAL_UART_Transmit(&huart3, (uint8_t *)"0", sizeof("0")-1, 10);
-	  htim3.Instance->CCR1 = 1500;
-	  HAL_Delay(1000);
-
+	  ssd1306_WriteString("open_door", Font_11x18, White);
+	  HAL_Delay(10);
 	  }else{
-
-	  HAL_UART_Transmit(&huart3, (uint8_t *)"1", sizeof("1")-1, 10);
-	  htim3.Instance->CCR1 = 2500;
-	  HAL_Delay(1000);
-
-	  }
-
-	  if(button_1 == 1){
-			ssd1306_WriteString("open_door", Font_11x18, White);
-			HAL_Delay(10);
-	  }else{
-			ssd1306_WriteString("close_door", Font_11x18, White);
-			HAL_Delay(10);
+	  ssd1306_WriteString("close_door", Font_11x18, White);
+	  HAL_Delay(10);
 	  }
 
 	  ssd1306_WriteString("        ", Font_11x18, White);
 	  ssd1306_UpdateScreen();
 	  HAL_Delay(10);
+
+	  if(button_1 == 1){
+		  HAL_UART_Transmit(&huart3, (uint8_t *)"0", sizeof("0")-1, 10);
+		  htim3.Instance->CCR1 = 1500;
+		  HAL_Delay(1000);
+	  }else{
+		  HAL_UART_Transmit(&huart3, (uint8_t *)"1", sizeof("1")-1, 10);
+		  htim3.Instance->CCR1 = 2500;
+		  HAL_Delay(1000);
+	  }
+
   }
     /* USER CODE END WHILE */
 
