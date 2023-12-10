@@ -21,7 +21,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "ssd1306.h"
 #include "stdio.h"
 #include "string.h"
 /* USER CODE END Includes */
@@ -60,8 +59,8 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
-static void MX_TIM3_Init(void);
 static void MX_I2C2_Init(void);
+static void MX_TIM3_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 /* USER CODE BEGIN PFP */
@@ -103,23 +102,31 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_I2C1_Init();
-  MX_TIM3_Init();
   MX_I2C2_Init();
+  MX_TIM3_Init();
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   char rx_data[2];
- // HAL_UART_Receive(&huart1, (uint8_t*)rx_data, sizeof(rx_data), 1000);
+
+  int a = 0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-  	HAL_UART_Receive(&huart3, (uint8_t *)rx_data, sizeof(rx_data)-1, 10);
-  	HAL_UART_Transmit(&huart2, (uint8_t *)rx_data, sizeof(rx_data)-1, 10);
-  	HAL_Delay(1000);
+
+	  HAL_UART_Receive(&huart3, (uint8_t *)rx_data, sizeof(rx_data), 10);
+	  if(!strncmp("1", rx_data, 1)) {
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"close", sizeof("close"), 10);
+		  HAL_Delay(1000);
+	  } else if(!strncmp("0", rx_data, 1)) {
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"open", sizeof("open"), 10);
+		  HAL_Delay(1000);
+	  }
   }
     /* USER CODE END WHILE */
 
@@ -417,12 +424,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PA0 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
