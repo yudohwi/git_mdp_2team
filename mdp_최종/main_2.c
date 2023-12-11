@@ -110,6 +110,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
   ssd1306_Init();
   int button_1 = 0;
+  int button_2 = 0;
+  int vacancy;
+  char vacancy_sit[20];
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   /* USER CODE END 2 */
 
@@ -118,22 +121,28 @@ int main(void)
   while (1)
   {
 	  button_1 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+	  button_2 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+
 	  ssd1306_SetCursor(2, 0);
 
-	  if(button_1 == 1){
+	  	if(button_1 == 1 && button_2 ==1){
+	  		 vacancy = 0;
+	  	}else if(button_1 == 0 && button_2 == 1){
+	  		 vacancy = 1;
+	  	}else if(button_1 == 1 && button_2 == 0){
+	  		 vacancy = 1;
+	  	}else if(button_1 == 0 && button_2 == 0){
+	  		 vacancy = 2;
+	  	}
 
-	  ssd1306_WriteString("open_door", Font_11x18, White);
+	  sprintf(vacancy_sit, "vacancy: %d", vacancy);
 	  HAL_Delay(10);
-	  }else{
-	  ssd1306_WriteString("close_door", Font_11x18, White);
-	  HAL_Delay(10);
-	  }
-
+	  ssd1306_WriteString(vacancy_sit, Font_11x18, White);
 	  ssd1306_WriteString("        ", Font_11x18, White);
 	  ssd1306_UpdateScreen();
 	  HAL_Delay(10);
 
-	  if(button_1 == 1){
+	  if(button_1 == 1 && button_2 == 1){
 		  HAL_UART_Transmit(&huart3, (uint8_t *)"0", sizeof("0")-1, 10);
 		  htim3.Instance->CCR1 = 1500;
 		  HAL_Delay(1000);
@@ -441,8 +450,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA0 */
-  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  /*Configure GPIO pins : PA0 PA1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
