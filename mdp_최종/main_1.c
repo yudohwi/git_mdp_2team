@@ -232,11 +232,12 @@ int main(void)
 		  if(open == 1){
 			  lcd_put_cur(1,0);
 			  lcd_send_string("2_door:open");
+			  HAL_UART_Transmit(&huart1, (uint8_t *)"1 1\n", sizeof("1 1\n")-1, 10);
 		  }else{
 			  lcd_put_cur(1,0);
 			  lcd_send_string("2_door:close");
+			  HAL_UART_Transmit(&huart1, (uint8_t *)"1 0\n", sizeof("1 0\n")-1, 10);
 		  }
-		  HAL_Delay(1000);
 
 	  }else{
 		  HAL_UART_Transmit(&huart3, (uint8_t *)"1", sizeof("1")-1, 10);
@@ -246,9 +247,11 @@ int main(void)
 		  if(open == 1){
 			  lcd_put_cur(1,0);
 			  lcd_send_string("2_door:open");
+			  HAL_UART_Transmit(&huart1, (uint8_t *)"0 1\n", sizeof("0 1\n")-1, 10);
 		  }else{
 			  lcd_put_cur(1,0);
 			  lcd_send_string("2_door:close");
+			  HAL_UART_Transmit(&huart1, (uint8_t *)"0 0\n", sizeof("0 0\n")-1, 10);
 		  }
 		  HAL_Delay(1000);
 	  }
