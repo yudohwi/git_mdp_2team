@@ -122,10 +122,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  button_1 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
-	  button_2 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
-	  button_3 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
-	  button_4 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
+	button_1 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+	button_2 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+	button_3 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
+	button_4 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
 
 
   	if(button_1 == 1 && button_2 == 1 && button_3 == 1 && button_4 == 1){
@@ -182,11 +182,11 @@ int main(void)
   	}
 
   	ssd1306_SetCursor(2, 0);
-	  sprintf(vacancy_sit, "vacancy: %d", vacancy);
-	  HAL_Delay(10);
-	  ssd1306_WriteString(vacancy_sit, Font_11x18, White);
-	  ssd1306_WriteString("        ", Font_11x18, White);
-	  ssd1306_UpdateScreen();
+	sprintf(vacancy_sit, "vacancy: %d", vacancy);
+	HAL_Delay(10);
+	ssd1306_WriteString(vacancy_sit, Font_11x18, White);
+	ssd1306_WriteString("        ", Font_11x18, White);
+	ssd1306_UpdateScreen();
 
 
   	if(button_1 == 1 && button_2 == 1 && button_3 == 1 && button_4 == 1){
