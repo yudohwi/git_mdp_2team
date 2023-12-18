@@ -188,7 +188,7 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  char rx_data[2];
+  char rx_data[9];
   ssd1306_Init();
   lcd_init();
   int button_1 = 0;
@@ -211,11 +211,11 @@ int main(void)
 	  ssd1306_SetCursor(2, 0);
 
 	  HAL_UART_Receive(&huart3, (uint8_t *)rx_data, sizeof(rx_data), 10);
-	  if(!strncmp("1 1 1 1\n", rx_data, 7)) {
-		  HAL_UART_Transmit(&huart2, (uint8_t *)"open", sizeof("open"), 10);
+	  if(!strncmp("1 1 1 1", rx_data, 8)) {
+		  HAL_UART_Transmit(&huart2, (uint8_t *)rx_data, sizeof(rx_data)-1, 10);
 		  open = 1;
-	  } else if(!strncmp("0 0 0 0\n", rx_data, 7)) {
-		  HAL_UART_Transmit(&huart2, (uint8_t *)"close", sizeof("close"), 10);
+	  } else {
+		  HAL_UART_Transmit(&huart2, (uint8_t *)rx_data, sizeof(rx_data)-1, 10);
 		  open = 0;
 	  }
 
