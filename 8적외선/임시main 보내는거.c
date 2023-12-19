@@ -182,110 +182,110 @@ int main(void)
   	}
 
   	ssd1306_SetCursor(2, 0);
-	sprintf(vacancy_sit, "vacancy: %d", vacancy);
-	HAL_Delay(10);
-	ssd1306_WriteString(vacancy_sit, Font_11x18, White);
-	ssd1306_WriteString("        ", Font_11x18, White);
-	ssd1306_UpdateScreen();
+  	sprintf(vacancy_sit, "vacancy: %d", vacancy);
+  	HAL_Delay(10);
+  	ssd1306_WriteString(vacancy_sit, Font_11x18, White);
+  	ssd1306_WriteString("        ", Font_11x18, White);
+  	ssd1306_UpdateScreen();
 
 
   	if(button_1 == 1 && button_2 == 1 && button_3 == 1 && button_4 == 1){
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"1111\n", sizeof("1111\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"1\n", sizeof("1\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"1\n", sizeof("1\n")-1, 10);
   		htim3.Instance->CCR1 = 1500;
   		HAL_Delay(1000);
   	}
 
   	else if(button_1 == 0 && button_2 == 1 && button_3 == 1 && button_4 == 1){
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"0111\n", sizeof("0111\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"2\n", sizeof("2\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		htim3.Instance->CCR1 = 2500;
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 1 && button_2 == 0 && button_3 == 1 && button_4 == 1){
 
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"1011\n", sizeof("1011\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"3\n", sizeof("3\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		htim3.Instance->CCR1 = 2500;
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 1 && button_2 == 1 && button_3 == 0 && button_4 == 1){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"1101\n", sizeof("1101\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"4\n", sizeof("4\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 1 && button_2 == 1 && button_3 == 1 && button_4 == 0){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"1110\n", sizeof("1110\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"5\n", sizeof("5\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
 
   	else if(button_1 == 0 && button_2 == 0 && button_3 == 1 && button_4 == 1){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"0011\n", sizeof("0011\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"6\n", sizeof("6\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 0 && button_2 == 1 && button_3 == 0 && button_4 == 1){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"0101\n", sizeof("0101\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"7\n", sizeof("7\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 0 && button_2 == 1 && button_3 == 1 && button_4 == 0){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"0110\n", sizeof("0110\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"8\n", sizeof("8\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 1 && button_2 == 0 && button_3 == 0 && button_4 == 1){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"1001\n", sizeof("1001\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"9\n", sizeof("9\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 1 && button_2 == 0 && button_3 == 1 && button_4 == 0){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"1010\n", sizeof("1010\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"10\n", sizeof("10\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 1 && button_2 == 1 && button_3 == 0 && button_4 == 0){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"1100\n", sizeof("1100\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"11\n", sizeof("11\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
 
   	else if(button_1 == 0 && button_2 == 0 && button_3 == 0 && button_4 == 1){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"0001\n", sizeof("0001\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"12\n", sizeof("12\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 0 && button_2 == 0 && button_3 == 1 && button_4 == 0){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"0010\n", sizeof("0010\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"13\n", sizeof("13\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 0 && button_2 == 1 && button_3 == 0 && button_4 == 0){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"0100\n", sizeof("0100\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"14\n", sizeof("14\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
   	else if(button_1 == 1 && button_2 == 0 && button_3 == 0 && button_4 == 0){
   		htim3.Instance->CCR1 = 2500;
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"1000\n", sizeof("1000\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"15\n", sizeof("15\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		HAL_Delay(1000);
   	}
 
   	else if(button_1 == 0 && button_2 == 0 && button_3 == 0 && button_4 == 0){
-  		HAL_UART_Transmit(&huart3, (uint8_t *)"0000\n", sizeof("0000\n")-1, 10);
+  		HAL_UART_Transmit(&huart3, (uint8_t *)"16\n", sizeof("16\n")-1, 10);
   		HAL_UART_Transmit(&huart2, (uint8_t *)"0\n", sizeof("0\n")-1, 10);
   		htim3.Instance->CCR1 = 2500;
   		HAL_Delay(1000);
