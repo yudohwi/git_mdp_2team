@@ -188,22 +188,109 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  char rx_data[8];
-  char tx_data[10];
+  char rx_data[1];
   ssd1306_Init();
   lcd_init();
+  int button_1 = 0;
+  int button_2 = 0;
+  int button_3 = 0;
+  int button_4 = 0;
+  int open = 0;
+  int vacancy;
+  char vacancy_sit[20];
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_UART_Receive(&huart3, (uint8_t *)rx_data, 8, 10);
-	  sprintf(tx_data, "%s\n", rx_data);
-	  HAL_Delay(10);
-	  HAL_UART_Transmit(&huart2, (uint8_t *)tx_data, 10, 10);
-	  HAL_Delay(1000);
+	  button_1 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
+	  button_2 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1);
+	  button_3 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4);
+	  button_4 = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
+	  ssd1306_SetCursor(2, 0);
 
+	  HAL_UART_Receive(&huart3, (uint8_t *)rx_data, sizeof(rx_data), 10);
+	  if(!strncmp("1", rx_data, 1)) {
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"1\n", sizeof("1\n")-1, 10);
+		  open = 1;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("2", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"2\n", sizeof("2\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("3", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"3\n", sizeof("3\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("4", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"4\n", sizeof("4\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("5", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"5\n", sizeof("5\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("6", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"6\n", sizeof("6\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("7", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"7\n", sizeof("7\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("8", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"8\n", sizeof("8\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("9", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"9\n", sizeof("9\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("10", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"10\n", sizeof("10\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("11", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"11\n", sizeof("11\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("12", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"12\n", sizeof("12\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("13", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"13\n", sizeof("13\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("14", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"14\n", sizeof("14\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("15", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"15\n", sizeof("15\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
+	  else if(!strncmp("16", rx_data, 1)){
+		  HAL_UART_Transmit(&huart2, (uint8_t *)"16\n", sizeof("16\n")-1, 10);
+		  open = 0;
+		  HAL_Delay(1000);
+	  }
   }
     /* USER CODE END WHILE */
 
