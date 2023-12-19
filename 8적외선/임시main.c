@@ -211,6 +211,7 @@ int main(void)
 	  ssd1306_SetCursor(2, 0);
 
 	  HAL_UART_Receive(&huart3, (uint8_t *)rx_data, sizeof(rx_data), 10);
+	  HAL_UART_Receive_IT(&huart3, (uint8_t *)rx_data, sizeof(rx_data)-1);
 
 	  if(!strncmp("A", rx_data, 1)){
 		  HAL_UART_Transmit(&huart2, (uint8_t *)"2\n", sizeof("2\n")-1, 10);
@@ -252,37 +253,37 @@ int main(void)
 		  open = 0;
 		  HAL_Delay(1000);
 	  }
-	  else if(!strncmp("I", rx_data, 2)){
+	  else if(!strncmp("I", rx_data, 1)){
 		  HAL_UART_Transmit(&huart2, (uint8_t *)"10\n", sizeof("10\n")-1, 10);
 		  open = 0;
 		  HAL_Delay(1000);
 	  }
-	  else if(!strncmp("J", rx_data, 2)){
+	  else if(!strncmp("J", rx_data, 1)){
 		  HAL_UART_Transmit(&huart2, (uint8_t *)"11\n", sizeof("11\n")-1, 10);
 		  open = 0;
 		  HAL_Delay(1000);
 	  }
-	  else if(!strncmp("K", rx_data, 2)){
+	  else if(!strncmp("K", rx_data, 1)){
 		  HAL_UART_Transmit(&huart2, (uint8_t *)"12\n", sizeof("12\n")-1, 10);
 		  open = 0;
 		  HAL_Delay(1000);
 	  }
-	  else if(!strncmp("L", rx_data, 2)){
+	  else if(!strncmp("L", rx_data, 1)){
 		  HAL_UART_Transmit(&huart2, (uint8_t *)"13\n", sizeof("13\n")-1, 10);
 		  open = 0;
 		  HAL_Delay(1000);
 	  }
-	  else if(!strncmp("M", rx_data, 2)){
+	  else if(!strncmp("M", rx_data, 1)){
 		  HAL_UART_Transmit(&huart2, (uint8_t *)"14\n", sizeof("14\n")-1, 10);
 		  open = 0;
 		  HAL_Delay(1000);
 	  }
-	  else if(!strncmp("N", rx_data, 2)){
+	  else if(!strncmp("N", rx_data, 1)){
 		  HAL_UART_Transmit(&huart2, (uint8_t *)"15\n", sizeof("15\n")-1, 10);
 		  open = 0;
 		  HAL_Delay(1000);
 	  }
-	  else if(!strncmp("O", rx_data, 2)){
+	  else if(!strncmp("O", rx_data, 1)){
 		  HAL_UART_Transmit(&huart2, (uint8_t *)"16\n", sizeof("16\n")-1, 10);
 		  open = 0;
 		  HAL_Delay(1000);
