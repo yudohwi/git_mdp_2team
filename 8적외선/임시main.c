@@ -352,7 +352,7 @@ int main(void)
 	  			strcpy(table_1,"1 1 1 1");
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
-	    		HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	    		HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	    		if(open_1 == 1){
 	    			  	lcd_put_cur(0, 0);
 	    			  	lcd_send_string("1_door:open");
@@ -364,7 +364,7 @@ int main(void)
 	    			  		lcd_put_cur(1,0);
 	    			  		lcd_send_string("2_door:close");
 	    			  	}
-	    			  	HAL_Delay(1000);
+
 	    			  }
 
 	    			  else{
@@ -378,8 +378,9 @@ int main(void)
 	    			  		lcd_put_cur(1,0);
 	    			  		lcd_send_string("2_door:close");
 	    			  	}
-	    			  	HAL_Delay(1000);
+
 	    			  }
+	    		HAL_Delay(1000);
 	   }
 
 	   else if(button_1 == 0 && button_2 == 1 && button_3 == 1 && button_4 == 1){
@@ -387,7 +388,7 @@ int main(void)
 	  			strcpy(table_1,"0 1 1 1");
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
-	    		HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	    		HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	    		if(open_1 == 1){
 	    			  	lcd_put_cur(0, 0);
 	    			  	lcd_send_string("1_door:open");
@@ -399,7 +400,7 @@ int main(void)
 	    			  		lcd_put_cur(1,0);
 	    			  		lcd_send_string("2_door:close");
 	    			  	}
-	    			  	HAL_Delay(1000);
+
 	    			  }
 
 	    			  else{
@@ -413,15 +414,16 @@ int main(void)
 	    			  		lcd_put_cur(1,0);
 	    			  		lcd_send_string("2_door:close");
 	    			  	}
-	    			  	HAL_Delay(1000);
+
 	    			  }
+	    		HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 0 && button_3 == 1 && button_4 == 1){
 	  	 	 	htim3.Instance->CCR1 = 2500;
 	  			strcpy(table_1,"1 0 1 1");
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
-	    		HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	    		HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	    		if(open_1 == 1){
 	    			  	lcd_put_cur(0, 0);
 	    			  	lcd_send_string("1_door:open");
@@ -433,7 +435,7 @@ int main(void)
 	    			  		lcd_put_cur(1,0);
 	    			  		lcd_send_string("2_door:close");
 	    			  	}
-	    			  	HAL_Delay(1000);
+
 	    			  }
 
 	    			  else{
@@ -447,15 +449,16 @@ int main(void)
 	    			  		lcd_put_cur(1,0);
 	    			  		lcd_send_string("2_door:close");
 	    			  	}
-	    			  	HAL_Delay(1000);
+
 	    			  }
+	    		HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 1 && button_3 == 0 && button_4 == 1){
 	  	 	 	htim3.Instance->CCR1 = 2500;
 	  			strcpy(table_1,"1 1 0 1");
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
-	    		HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	    		HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	    		if(open_1 == 1){
 	    			  	lcd_put_cur(0, 0);
 	    			  	lcd_send_string("1_door:open");
@@ -467,7 +470,7 @@ int main(void)
 	    			  		lcd_put_cur(1,0);
 	    			  		lcd_send_string("2_door:close");
 	    			  	}
-	    			  	HAL_Delay(1000);
+
 	    			  }
 
 	    			  else{
@@ -481,15 +484,16 @@ int main(void)
 	    			  		lcd_put_cur(1,0);
 	    			  		lcd_send_string("2_door:close");
 	    			  	}
-	    			  	HAL_Delay(1000);
+
 	    			  }
+	    		HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 1 && button_3 == 1 && button_4 == 0){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"1 1 1 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -501,7 +505,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -515,8 +519,9 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 
 	   else if(button_1 == 0 && button_2 == 0 && button_3 == 1 && button_4 == 1){
@@ -524,7 +529,7 @@ int main(void)
 	  	 	 strcpy(table_1,"0 0 1 1");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -536,7 +541,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -550,15 +555,16 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 0 && button_2 == 1 && button_3 == 0 && button_4 == 1){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"0 1 0 1");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -570,7 +576,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -584,16 +590,17 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 0 && button_2 == 1 && button_3 == 1 && button_4 == 0){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"0 1 1 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
-	  	 	 HAL_Delay(1000);if(open_1 == 1){
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 if(open_1 == 1){
 	  		  	lcd_put_cur(0, 0);
 	  		  	lcd_send_string("1_door:open");
 	  		  if(open_2 == 1){
@@ -604,7 +611,7 @@ int main(void)
 	  		  		lcd_put_cur(1,0);
 	  		  		lcd_send_string("2_door:close");
 	  		  	}
-	  		  	HAL_Delay(1000);
+
 	  		  }
 
 	  		  else{
@@ -618,15 +625,16 @@ int main(void)
 	  		  		lcd_put_cur(1,0);
 	  		  		lcd_send_string("2_door:close");
 	  		  	}
-	  		  	HAL_Delay(1000);
+
 	  		  }
+	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 0 && button_3 == 0 && button_4 == 1){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"1 0 0 1");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -638,7 +646,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -652,15 +660,16 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 0 && button_3 == 1 && button_4 == 0){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"1 0 1 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -672,7 +681,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -686,15 +695,16 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 1 && button_3 == 0 && button_4 == 0){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"1 1 0 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -706,7 +716,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -720,8 +730,9 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 
 	   else if(button_1 == 0 && button_2 == 0 && button_3 == 0 && button_4 == 1){
@@ -729,7 +740,7 @@ int main(void)
 	  	 	 strcpy(table_1,"0 0 0 1");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -741,7 +752,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -755,15 +766,16 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 0 && button_2 == 0 && button_3 == 1 && button_4 == 0){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"0 0 1 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -775,7 +787,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -789,15 +801,16 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 0 && button_2 == 1 && button_3 == 0 && button_4 == 0){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"0 1 0 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -809,7 +822,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -823,15 +836,16 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 0 && button_3 == 0 && button_4 == 0){
 	  	 	 htim3.Instance->CCR1 = 2500;
 	  	 	 strcpy(table_1,"1 0 0 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -843,7 +857,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -857,8 +871,9 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 
 	   else if(button_1 == 0 && button_2 == 0 && button_3 == 0 && button_4 == 0){
@@ -866,7 +881,7 @@ int main(void)
 	  	 	 strcpy(table_1,"0 0 0 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
-	  	 	 HAL_UART_Transmit(&huart2, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -878,7 +893,7 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
 
 	  	 		  else{
@@ -892,8 +907,9 @@ int main(void)
 	  	 		  		lcd_put_cur(1,0);
 	  	 		  		lcd_send_string("2_door:close");
 	  	 		  	}
-	  	 		  	HAL_Delay(1000);
+
 	  	 		  }
+	  	 	HAL_Delay(1000);
 	   }
 	  lcd_clear();
   }
