@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        li {
+            list-style: none;
+        }
+        h1{
+            color: yellow;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: flex-end;
+            width: 800px;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .menu>li {
+            width: 20%;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            background-color: rgba(255, 255, 0, 0.774);
+            margin-right: 0; /* 간격 없애기 */
+        }
+
+        .menu a {
+            color: black;
+        }
+
+        .submenu>li {
+            line-height: 50px;
+            background-color: rgba(159, 205, 50, 0.582);
+        }
+
+        .menu:hover .submenu {
+            height: 0; /* 초기에는 서브메뉴를 숨기기 */
+            overflow: hidden;
+            transition-duration: 0.5s;
+        }
+
+        .menu>li:hover .submenu {
+            height: 100px; /* 호버 시 서브메뉴를 보이게 하기 */
+            overflow: visible;
+            transition-duration: 1s;
+        }
+
+        .submenu {
+            height: 0; /* 초기에는 서브메뉴를 숨기기 */
+            overflow: hidden;
+            
+            transition-duration: 0.5s;
+        }
+        .submenu{
+            cursor: pointer;
+        }
+        .container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .jb-box {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #content-container {
+            text-align: center;
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .menu:hover .submenu li {
+            height: 50px;
+            transition-duration: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="menu">
+            <li>
+                <a>메뉴바</a>
+                <ul class="submenu">
+                    <li><a onclick="window.location.href=`{{ url_for('home') }}`">홈 화면</a></li>
+                    <li><a onclick="window.location.href='index.html'">좌석보러가기</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Background Video -->
+        <div class="jb-box">
+            <video muted autoplay loop>
+                <source src='/static/video.mp4' type="video/mp4">
+            </video>
+        </div>
+        <!-- Content Container -->
+        <div id="content-container">
+            <h1>급식지도시스템</h1>
+        </div>
+    </div>
+</body>
+
+</html>

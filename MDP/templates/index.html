@@ -1,14 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STM32 Data Update</title>
+    <title>Serial Data Viewer</title>
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: flex-end;
+            width: 800px;
+            overflow: hidden;
+            margin: auto;
+        }
+
+        .menu>li {
+            width: 20%;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            background-color: rgba(255, 255, 0, 0.774);
+            margin-right: 0;
+        }
+
+        .menu a {
+            color: black;
+        }
+
+        .submenu>li {
+            line-height: 50px;
+            background-color: rgba(159, 205, 50, 0.582);
+        }
+
+        .menu:hover .submenu {
+            height: 0;
+            overflow: hidden;
+            transition-duration: 0.5s;
+        }
+
+        .menu>li:hover .submenu {
+            height: 100px;
+            overflow: visible;
+            transition-duration: 1s;
+        }
+
+        .submenu {
+            height: 0;
+            overflow: hidden;
+            transition-duration: 0.5s;
+            cursor: pointer;
+        }
+
+        .jb-text {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            margin-top: -24px;
+            text-align: center;
+            font-size: 48px;
+            color: #ea2525;
+        }
+
+        #content-container {
+            position: absolute;
+            top: 0%;
+            bottom: 0%;
+            left: 20%;
+            right: 35%;
+            border: 3px solid silver;
+            overflow: hidden;
+        }
+
+        #content-container h1 {
+            margin: 20px;
+        }
+
+        .menu:hover .submenu li {
+            height: 50px;
+            transition-duration: 1s;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .grid-item {
+            width: calc(80%);
+            height: 100%;
+            display: inline-block;
+            margin-bottom: 100px;
+            position: relative;
+            
+        }
+
+        .black-rectangle {
+            width: 100%;
+            height: 20px;
+            background-color: black;
+            margin-bottom: 10px;
+        }
+
+        .grid-item span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(177, 37, 37);
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Chair1: {{ data[0] }}</h1>
-    <br>
-    <h1>Chair2: {{ data[2] }}</h1>
+    <!-- Content Container -->
+    <ul class="menu">
+        <li>
+            <a>메뉴바</a>
+            <ul class="submenu">
+                <li><a onclick="window.location.href=`{{ url_for('home') }}`">홈 화면</a></li>
+                <li><a onclick="window.location.href='index.html'">좌석보러가기</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div id="content-container">
+        <h1>자리배치표</h1>
+        <div class="grid-container" id="grid-container"></div>
+        <script>
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+            socket.on('uart_data', function (data) {
+                // 받은 데이터로 data-container div의 내용 업데이트
+                $('#data-container').html('<p>' + data.data + '</p>');
+
+                // 데이터를 분할하고 그리드 색상을 업데이트
+                updateGridColors(data.data);
+            });
+
+            function updateGridColors(data) {
+                // 데이터를 문자열 배열로 분할
+                var dataArray = data.split('');
+
+                // 그리드 컨테이너 가져오기
+                var gridContainer = document.getElementById('grid-container');
+                gridContainer.innerHTML = ''; // 이전 내용 지우기
+
+                // UART 데이터를 기반으로 그리드 항목 생성 및 추가
+                var orderMapping = [1, 2, 3, 4, 5, 6, 7, 8];
+                orderMapping.forEach(function (newIndex, originalIndex) {
+                    var gridItem = document.createElement('div');
+                    gridItem.className = 'grid-item';
+
+                    // UART 데이터 값에 따라 배경색 설정
+                    var value = dataArray[newIndex -1];
+                    if (value === '0') {
+                        gridItem.style.backgroundColor = 'blue';
+                    } else if (value === '1') {
+                        gridItem.style.backgroundColor = 'red';
+                    }
+
+                    // 그리드 항목에 번호 추가
+                    var label = document.createElement('span');
+                    label.innerText = originalIndex + 1;
+                    gridItem.appendChild(label);
+
+                    // 그리드 항목을 그리드 컨테이너에 추가
+                    gridContainer.appendChild(gridItem);
+                });
+            }
+        </script>
+    </div>
 </body>
+
 </html>

@@ -1,34 +1,77 @@
+# main.py
 from flask import Flask, render_template
-import serial
+from flask_socketio import SocketIO
 import threading
+import time
+import signal
+import sys
+import serial
 
 app = Flask(__name__)
+socketio = SocketIO(app)
 
-ser = serial.Serial("COM6", 115200)
-received_data = "0,0"
+ser = None
+ser_lock = threading.Lock()
 
-def read_serial_data():
-    global received_data
+# 데이터 수신 쓰레드
+def uart_listener():
     while True:
-        received_data = ser.readline().decode().strip()
+        with ser_lock:
+            if ser and ser.in_waiting > 0:
+                data = ser.readline().decode('utf-8').strip()
+                socketio.emit('uart_data', {'data': data})
+        time.sleep(0.1)
 
-# 시리얼 데이터를 읽는 스레드 함수
-serial_thread = threading.Thread(target=read_serial_data)
-serial_thread.daemon = True
-serial_thread.start()
+def signal_handler(sig, frame):
+    print("Ctrl+C pressed. Closing serial port.")
+    with ser_lock:
+        if ser:
+            ser.close()
+            ser = None
+    sys.exit(0)
 
-# 애플리케이션 종료 시 실행할 함수
-@app.teardown_appcontext
-def teardown_appcontext(exception=None):
-    # 시리얼 포트 닫기
-    ser.close()
-    print("Serial port is closed.")
-
+# 기본 경로를 /로 설정하고 home.html을 렌더링하는 라우트 추가
 @app.route('/')
+def home():
+    return render_template('home.html')
+
+# 다른 엔드포인트에 대한 라우트 추가 (예: /index)
+@app.route('/index.html')
 def index():
-    print(received_data)
-    data_from_stm32 = received_data
-    return render_template('index.html', data=data_from_stm32)
+    return render_template('index.html')
+
+
+# 웹 소켓 핸들러
+@socketio.on('connect')
+def handle_connect():
+    print('Client connected')
+    open_serial_port()  # Automatically open serial port when a client connects
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('Client disconnected')
+    close_serial_port()  # Automatically close serial port when a client disconnects
+
+def open_serial_port():
+    global ser, ser_lock  # global 선언 추가
+    with ser_lock:
+        ser = serial.Serial('COM5', 115200)  # 포트와 보드레이트는 실제 설정에 맞게 변경해야 합니다.
+
+def close_serial_port():
+    global ser, ser_lock  # global 선언 추가
+    with ser_lock:
+        if ser:
+            ser.close()
+            ser = None
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    signal.signal(signal.SIGINT, signal_handler)
+
+    uart_thread = threading.Thread(target=uart_listener)
+    uart_thread.daemon = True 
+    uart_thread.start()
+
+    socketio.on_event('open_port', open_serial_port)
+    socketio.on_event('close_port', close_serial_port)
+
+    socketio.run(app, debug=True)
