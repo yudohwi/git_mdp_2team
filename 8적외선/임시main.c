@@ -384,7 +384,7 @@ int main(void)
 	   }
 
 	   else if(button_1 == 0 && button_2 == 1 && button_3 == 1 && button_4 == 1){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  			strcpy(table_1,"0 1 1 1");
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
@@ -419,7 +419,7 @@ int main(void)
 	    		HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 0 && button_3 == 1 && button_4 == 1){
-	  	 	 	htim3.Instance->CCR1 = 2500;
+	  	 	 	htim3.Instance->CCR1 = 500;
 	  			strcpy(table_1,"1 0 1 1");
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
@@ -454,7 +454,7 @@ int main(void)
 	    		HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 1 && button_3 == 0 && button_4 == 1){
-	  	 	 	htim3.Instance->CCR1 = 2500;
+	  	 	 	htim3.Instance->CCR1 = 500;
 	  			strcpy(table_1,"1 1 0 1");
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
@@ -489,7 +489,7 @@ int main(void)
 	    		HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 1 && button_3 == 1 && button_4 == 0){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"1 1 1 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -525,7 +525,7 @@ int main(void)
 	   }
 
 	   else if(button_1 == 0 && button_2 == 0 && button_3 == 1 && button_4 == 1){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"0 0 1 1");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -560,7 +560,7 @@ int main(void)
 	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 0 && button_2 == 1 && button_3 == 0 && button_4 == 1){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"0 1 0 1");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -595,7 +595,7 @@ int main(void)
 	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 0 && button_2 == 1 && button_3 == 1 && button_4 == 0){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"0 1 1 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -630,7 +630,7 @@ int main(void)
 	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 0 && button_3 == 0 && button_4 == 1){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"1 0 0 1");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -665,7 +665,7 @@ int main(void)
 	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 0 && button_3 == 1 && button_4 == 0){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"1 0 1 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -700,7 +700,7 @@ int main(void)
 	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 1 && button_3 == 0 && button_4 == 0){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"1 1 0 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -736,7 +736,7 @@ int main(void)
 	   }
 
 	   else if(button_1 == 0 && button_2 == 0 && button_3 == 0 && button_4 == 1){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"0 0 0 1");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -771,7 +771,7 @@ int main(void)
 	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 0 && button_2 == 0 && button_3 == 1 && button_4 == 0){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"0 0 1 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -806,7 +806,7 @@ int main(void)
 	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 0 && button_2 == 1 && button_3 == 0 && button_4 == 0){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"0 1 0 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -841,7 +841,7 @@ int main(void)
 	  	 	HAL_Delay(1000);
 	   }
 	   else if(button_1 == 1 && button_2 == 0 && button_3 == 0 && button_4 == 0){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"1 0 0 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
@@ -877,7 +877,7 @@ int main(void)
 	   }
 
 	   else if(button_1 == 0 && button_2 == 0 && button_3 == 0 && button_4 == 0){
-	  	 	 htim3.Instance->CCR1 = 2500;
+	  	 	 htim3.Instance->CCR1 = 500;
 	  	 	 strcpy(table_1,"0 0 0 0");
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
