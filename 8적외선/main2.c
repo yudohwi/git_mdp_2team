@@ -353,7 +353,6 @@ int main(void)
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
 	    		HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
-	    		HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	    		if(open_1 == 1){
 	    			  	lcd_put_cur(0, 0);
 	    			  	lcd_send_string("1_door:open");
@@ -390,6 +389,7 @@ int main(void)
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
 	    		HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	    		HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	    		if(open_1 == 1){
 	    			  	lcd_put_cur(0, 0);
 	    			  	lcd_send_string("1_door:open");
@@ -425,6 +425,7 @@ int main(void)
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
 	    		HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	    		HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	    		if(open_1 == 1){
 	    			  	lcd_put_cur(0, 0);
 	    			  	lcd_send_string("1_door:open");
@@ -460,6 +461,7 @@ int main(void)
 	  			strcpy(result, table_1);
 	    		strcat(result, table_2);
 	    		HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	    		HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	    		if(open_1 == 1){
 	    			  	lcd_put_cur(0, 0);
 	    			  	lcd_send_string("1_door:open");
@@ -495,6 +497,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -531,6 +534,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -566,6 +570,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -601,6 +606,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	 if(open_1 == 1){
 	  		  	lcd_put_cur(0, 0);
 	  		  	lcd_send_string("1_door:open");
@@ -636,6 +642,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -671,6 +678,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -706,6 +714,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -742,6 +751,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -777,6 +787,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -812,6 +823,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -847,6 +859,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
@@ -883,6 +896,7 @@ int main(void)
 	  	 	 strcpy(result, table_1);
 	  	 	 strcat(result, table_2);
 	  	 	 HAL_UART_Transmit(&huart1, (uint8_t *)result, sizeof(result)-2, 10);
+	  	 	 HAL_UART_Transmit(&huart3, (uint8_t *)open_1, sizeof(open_1)-1, 10);
 	  	 	if(open_1 == 1){
 	  	 		  	lcd_put_cur(0, 0);
 	  	 		  	lcd_send_string("1_door:open");
